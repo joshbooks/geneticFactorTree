@@ -72,21 +72,24 @@ modulated by selectivePressure
 **/
 void Population::breedPopulation(Population *newer)
 {
-    mpq_t tempCalc, tempOne;
+    mpq_t tempCalc;
     std::array<double, popSize> probs;
  //   probs.fill(1.0);
-    mpq_inits(tempCalc, tempOne, NULL);
+    mpq_inits(tempCalc, NULL);
 
     for (unsigned int i = 0; i < popSize; i++)
     {
  //       probs.at(i) += selectivePressure/population[i]->unFitnessRatio;
         mpq_set_d(tempCalc, selectivePressure);
-        mpq_set_ui(tempOne, 1, 1);
-        mpq_div(tempCalc, population[i]->unFitnessRatio, tempCalc);
-        mpq_add(tempCalc, tempOne, tempCalc);
-        mpq_div(tempCalc, tempOne, tempCalc);
-        probs.at(i) = mpq_get_d(tempCalc);
+//        mpq_set_ui(tempOne, 1, 1);
+        mpq_div(tempCalc, tempCalc, population[i]->unFitnessRatio);
+//        mpq_div(tempCalc, population[i]->unFitnessRatio, tempCalc);
+
+//        mpq_add(tempCalc, tempOne, tempCalc);
+//        mpq_div(tempCalc, tempOne, tempCalc);
+        probs.at(i) = 1 + mpq_get_d(tempCalc);
     }
+    mpq_clear(tempCalc);
 
     std::discrete_distribution<int> mateChoice(probs.begin(), probs.end());
 
