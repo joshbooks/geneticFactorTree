@@ -188,6 +188,9 @@ bool FactorTree::calcValue(void)
 
 FactorTree::~FactorTree()
 {
+	mpq_clear(unFitnessRatio);
+	mpz_clear(unFitness);
+	mpz_clear(value);
     for (int i = 0; i < arrayLength; i++)
         mpz_clear(factors[i]);
     delete [] factors;
