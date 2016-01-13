@@ -2,9 +2,9 @@
 #include <string>
 #include <iostream>
 
-#include "include/globals.h"
-#include "include/Population.h"
-#include "include/FactorTree.h"
+#include "../include/globals.h"
+#include "../include/Population.h"
+#include "../include/FactorTree.h"
 
 
 mpz_t goal;

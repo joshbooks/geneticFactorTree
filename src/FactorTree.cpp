@@ -1,4 +1,4 @@
-#include "include/FactorTree.h"
+#include "../include/FactorTree.h"
 #include <random>
 #include <chrono>
 #include <limits>

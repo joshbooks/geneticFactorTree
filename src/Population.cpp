@@ -1,5 +1,5 @@
-#include "include/Population.h"
-#include "include/globals.h"
+#include "../include/Population.h"
+#include "../include/globals.h"
 
 #include <stdlib.h>
 #include <iostream>
